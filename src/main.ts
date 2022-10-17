@@ -14,7 +14,7 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, options);
 
-  // La ruta en que se sirve la documentación
+  // La ruta en que se sirve la documentació
   SwaggerModule.setup('docs', app, document);
 
   await app.listen(parseInt(process.env.PORT) || 3000);
