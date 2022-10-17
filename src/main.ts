@@ -5,6 +5,7 @@ import * as dotenv from 'dotenv';
 async function bootstrap() {
   dotenv.config();
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
 
   // Configurar títulos de documentación
   const options = new DocumentBuilder()
