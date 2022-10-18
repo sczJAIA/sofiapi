@@ -14,7 +14,7 @@ import { Request } from 'express';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ParseObjectIdPipe } from 'src/utilities/parse-object-id-pipe.pipe';
 import { AdvisorsService } from './advisors.service';
-import { CreateAdvisorsDto } from './dto/create-advisor.dto';
+// import { CreateAdvisorsDto } from './dto/create-advisor.dto';
 import { UpdateAdvisorsDto } from './dto/update-advisor.dto';
 
 @ApiBearerAuth()
@@ -24,10 +24,10 @@ import { UpdateAdvisorsDto } from './dto/update-advisor.dto';
 export class AdvisorsController {
   constructor(private readonly advisorsService: AdvisorsService) {}
 
-  @Post()
-  create(@Body() createAdvisorDto: CreateAdvisorsDto) {
-    return this.advisorsService.create(createAdvisorDto);
-  }
+  // @Post()
+  // create(@Body() createAdvisorDto: CreateAdvisorsDto) {
+  //   return this.advisorsService.create(createAdvisorDto);
+  // }
 
   @Get()
   findAll(@Req() request: Request) {

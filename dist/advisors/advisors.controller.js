@@ -18,14 +18,10 @@ const swagger_1 = require("@nestjs/swagger");
 const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 const parse_object_id_pipe_pipe_1 = require("../utilities/parse-object-id-pipe.pipe");
 const advisors_service_1 = require("./advisors.service");
-const create_advisor_dto_1 = require("./dto/create-advisor.dto");
 const update_advisor_dto_1 = require("./dto/update-advisor.dto");
 let AdvisorsController = class AdvisorsController {
     constructor(advisorsService) {
         this.advisorsService = advisorsService;
-    }
-    create(createAdvisorDto) {
-        return this.advisorsService.create(createAdvisorDto);
     }
     findAll(request) {
         return this.advisorsService.findAll(request);
@@ -40,13 +36,6 @@ let AdvisorsController = class AdvisorsController {
         return this.advisorsService.remove(id);
     }
 };
-__decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_advisor_dto_1.CreateAdvisorsDto]),
-    __metadata("design:returntype", void 0)
-], AdvisorsController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
     __param(0, (0, common_1.Req)()),

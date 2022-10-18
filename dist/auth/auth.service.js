@@ -44,7 +44,11 @@ let AuthService = class AuthService {
         return data;
     }
     async register_advisors(advisorsObject) {
-        const { password } = advisorsObject;
+        const { email, password } = advisorsObject;
+        const advisorsExist = await this.advisorsModel.findOne({ email });
+        if (advisorsExist) {
+            throw new common_1.HttpException('EMAIL_ALREADY_REGISTERED', common_1.HttpStatus.CONFLICT);
+        }
         const plainToHash = await (0, bcrypt_1.hash)(password, 10);
         advisorsObject = Object.assign(Object.assign({}, advisorsObject), { password: plainToHash });
         return this.advisorsModel.create(advisorsObject);

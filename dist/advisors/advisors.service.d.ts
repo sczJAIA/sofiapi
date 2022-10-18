@@ -22,7 +22,6 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import { CreateAdvisorsDto } from './dto/create-advisor.dto';
 import { UpdateAdvisorsDto } from './dto/update-advisor.dto';
 import { Advisors, AdvisorsDocument } from './schemas/advisor.schema';
 import { Model } from 'mongoose';
@@ -30,7 +29,6 @@ import { Request } from 'express';
 export declare class AdvisorsService {
     private readonly advisorsModel;
     constructor(advisorsModel: Model<AdvisorsDocument>);
-    create(createAdvisorDto: CreateAdvisorsDto): Promise<Advisors>;
     findAll(request: Request): Promise<Advisors[]>;
     findOne(id: string): Promise<Advisors>;
     update(id: string, updateAdvisorsDto: UpdateAdvisorsDto): Promise<Advisors>;

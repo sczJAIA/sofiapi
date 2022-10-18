@@ -39,7 +39,11 @@ export class AuthService {
   }
 
   async register_advisors(advisorsObject: RegisterDto): Promise<Advisors> {
-    const { password } = advisorsObject;
+    const { email, password } = advisorsObject;
+    const advisorsExist = await this.advisorsModel.findOne({ email });
+    if (advisorsExist) {
+      throw new HttpException('EMAIL_ALREADY_REGISTERED', HttpStatus.CONFLICT);
+    }
     const plainToHash = await hash(password, 10);
     advisorsObject = { ...advisorsObject, password: plainToHash };
     return this.advisorsModel.create(advisorsObject);

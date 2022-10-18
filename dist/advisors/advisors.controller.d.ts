@@ -25,12 +25,10 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { Request } from 'express';
 import { AdvisorsService } from './advisors.service';
-import { CreateAdvisorsDto } from './dto/create-advisor.dto';
 import { UpdateAdvisorsDto } from './dto/update-advisor.dto';
 export declare class AdvisorsController {
     private readonly advisorsService;
     constructor(advisorsService: AdvisorsService);
-    create(createAdvisorDto: CreateAdvisorsDto): Promise<import("./schemas/advisor.schema").Advisors>;
     findAll(request: Request): Promise<import("./schemas/advisor.schema").Advisors[]>;
     findOne(id: string): Promise<import("./schemas/advisor.schema").Advisors>;
     update(id: string, updateAdvisorDto: UpdateAdvisorsDto): Promise<import("./schemas/advisor.schema").Advisors>;

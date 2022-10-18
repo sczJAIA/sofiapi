@@ -17,16 +17,9 @@ const common_1 = require("@nestjs/common");
 const advisor_schema_1 = require("./schemas/advisor.schema");
 const mongoose_1 = require("mongoose");
 const mongoose_2 = require("@nestjs/mongoose");
-const bcrypt_1 = require("bcrypt");
 let AdvisorsService = class AdvisorsService {
     constructor(advisorsModel) {
         this.advisorsModel = advisorsModel;
-    }
-    async create(createAdvisorDto) {
-        const { password } = createAdvisorDto;
-        const plainToHash = await (0, bcrypt_1.hash)(password, 10);
-        createAdvisorDto = Object.assign(Object.assign({}, createAdvisorDto), { password: plainToHash });
-        return this.advisorsModel.create(createAdvisorDto);
     }
     async findAll(request) {
         return this.advisorsModel
@@ -35,14 +28,20 @@ let AdvisorsService = class AdvisorsService {
             .exec();
     }
     async findOne(id) {
-        return this.advisorsModel.findOne({ _id: id }).exec();
+        const advisors = this.advisorsModel.findOne({ _id: id }).exec();
+        if (!advisors) {
+            throw new common_1.HttpException('USER_NOT_FOUND', common_1.HttpStatus.CONFLICT);
+        }
+        return advisors;
     }
     async update(id, updateAdvisorsDto) {
+        await this.findOne(id);
         return this.advisorsModel.findOneAndUpdate({ _id: id }, updateAdvisorsDto, {
             new: true,
         });
     }
     async remove(id) {
+        await this.findOne(id);
         return this.advisorsModel.findByIdAndRemove({ _id: id }).exec();
     }
 };
