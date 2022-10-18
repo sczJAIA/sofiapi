@@ -9,9 +9,9 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    // ?retryWrites=true&w=majority
     MongooseModule.forRoot(
-      'mongodb+srv://alejandro7op:LMUTZ4qVZ5U5Zm4H@cluster0.7wx8liv.mongodb.net/sofi',
+      // process.env.URIMONGO,
+      'mongodb+srv://alejandro7op:LMUTZ4qVZ5U5Zm4H@cluster0.7wx8liv.mongodb.net/sofi?retryWrites=true&w=majority',
     ),
     AdvisorsModule,
     AuthModule,
