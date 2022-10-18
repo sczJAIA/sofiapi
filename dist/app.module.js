@@ -20,7 +20,7 @@ AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             config_1.ConfigModule.forRoot(),
-            mongoose_1.MongooseModule.forRoot(process.env.URIMONGOPROD),
+            mongoose_1.MongooseModule.forRoot(process.env.URIMONGOPROD, { useNewUrlParser: true }),
             advisors_module_1.AdvisorsModule,
             auth_module_1.AuthModule,
         ],

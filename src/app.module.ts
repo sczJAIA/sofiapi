@@ -9,7 +9,7 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.URIMONGOPROD),
+    MongooseModule.forRoot(process.env.URIMONGOPROD, { useNewUrlParser: true }),
     AdvisorsModule,
     AuthModule,
   ],
