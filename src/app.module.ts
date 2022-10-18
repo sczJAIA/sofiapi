@@ -11,7 +11,7 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot(),
     MongooseModule.forRoot(
       // process.env.URIMONGO,
-      'mongodb+srv://alejandro7op:LMUTZ4qVZ5U5Zm4H@cluster0.7wx8liv.mongodb.net/sofi?retryWrites=true&w=majority',
+      'mongodb+srv://alejandrodev:2L8MrmvWP635U409@db-mongodb-nyc1-33154-559f29c0.mongo.ondigitalocean.com/?authMechanism=DEFAULT',
     ),
     AdvisorsModule,
     AuthModule,
