@@ -20,7 +20,7 @@ AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             config_1.ConfigModule.forRoot(),
-            mongoose_1.MongooseModule.forRoot('mongodb+srv://alejandrodev:2L8MrmvWP635U409@db-mongodb-nyc1-33154-559f29c0.mongo.ondigitalocean.com/?authMechanism=DEFAULT'),
+            mongoose_1.MongooseModule.forRoot(process.env.URIMONGOPROD),
             advisors_module_1.AdvisorsModule,
             auth_module_1.AuthModule,
         ],
